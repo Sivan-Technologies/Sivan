@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://www.sivantech.online/og-image.png" alt="Sivan Logo" width="320"/>
+<img src="assets/sivan_logo_transparent.png" alt="Sivan Logo" width="320"/>
 
 # Sivan
 
