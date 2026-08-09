@@ -48,20 +48,6 @@ This repository contains the **marketing / pilot-access website** for Sivan. It 
 
 ---
 
-## ✨ Features
-
-- **Editorial, Dribbble-style design** — Inter for UI type, Instrument Serif italics for accent words, on a light, airy background
-- **Brand-consistent palette** — colors drawn from the Sivan logo: deep blue `#037BDF`, bright blue `#018EE8`, cyan `#0FAEC0`, green `#34C77B`
-- **Real Sivan logo** — white-background-free logo in the navbar, footer and browser favicon
-- **Hero with a chat-style "Live agreement preview"** — a WhatsApp-like mockup that brings the product to life on first load
-- **Eight content sections**: Hero · What Sivan does · How it works (5 steps) · Transparency & Structure · Current scope (Nigeria-first) · Bank payouts (offramp flow) · Pilot access CTA · Contact / Request Pilot Access
-- **Scroll-reveal animations** — lightweight `IntersectionObserver`-based `Reveal` wrapper, no animation library needed
-- **Sticky navbar with mobile menu** — fully responsive from mobile to widescreen
-- **Bundled local fonts** — Inter + Instrument Serif via Fontsource (works offline, no CDN dependency)
-- **Zero runtime dependencies beyond React** — all styling is a hand-rolled CSS design system (`index.css`), no Tailwind/CSS framework
-
----
-
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
