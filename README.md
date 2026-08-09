@@ -2,9 +2,9 @@
 
 <img src="public/sivan-logo.png" alt="Sivan logo" width="220" />
 
-# Sivan — Website
+# Sivan 
 
-**WhatsApp-based service orchestration: connect content creators, freelancers and agencies with the right jobs — clear terms, secure payouts, structured delivery tracking.**
+**WhatsApp-based service orchestration: connect content creators, freelancers and agencies with the right jobs clear terms, secure payouts, structured delivery tracking.**
 
 [![React](https://img.shields.io/badge/React-18.3.1-61dafb?logo=react&logoColor=white)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646cff?logo=vite&logoColor=white)](https://vitejs.dev)
