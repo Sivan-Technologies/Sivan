@@ -231,6 +231,6 @@ A license has not been specified for this repository yet (no `LICENSE` file is p
 
 <div align="center">
 
-Made with ⚡ by **Sivan Technologies** — [sivantech.online](https://sivantech.online)
+Made by **Sivan Technologies** — [sivantech.online](https://sivantech.online)
 
 </div>
