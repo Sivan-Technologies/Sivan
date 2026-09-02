@@ -1,102 +1,169 @@
-# Sivan AI — WebMCP Multi-Chain Settlement Layer
+<div align="center">
 
-The Autonomous Settlement and Multi-Chain Financial Layer for Browser AI Agents.
+<img src="assets/sivan_logo_transparent.png" alt="Sivan Logo" width="320"/>
 
-Official WebMCP Challenge Submission: https://webmcp.devpost.com/
+# Sivan AI
 
----
+**Autonomous Multi-Chain Settlement Layer, Service Agreement Coordination & Fiat Off-Ramp for Humans and AI Agents.**
 
-## Overview
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Multi-Chain](https://img.shields.io/badge/Multi--Chain-Solana%20%7C%20Base%20%7C%20Stellar%20%7C%20Celo%20%7C%20BSC-blueviolet)](https://app.sivantech.online/)
+[![WebMCP Standard](https://img.shields.io/badge/WebMCP-W3C%20Draft%20Compliant-brightgreen)](https://github.com/webmachinelearning/webmcp)
+[![Stablecoins](https://img.shields.io/badge/Stablecoins-USDC%20%7C%20USDT-green)](https://app.sivantech.online/)
+[![Status](https://img.shields.io/badge/Status-Staging%20Live-orange)](https://staging.sivantech.online/)
+[![Nigeria First](https://img.shields.io/badge/Live%20In-Nigeria-brightgreen)](https://sivantech.online/)
 
-Sivan AI connects browser AI agents (ChatGPT, Google Gemini in Chrome, Claude) with cryptographic multi-chain rails and local banking infrastructure.
+[🌐 Landing Page](https://sivantech.online/) · [🚀 Production App](https://app.sivantech.online/) · [🧪 Staging App](https://staging.sivantech.online/) · [🤖 Telegram AI](https://t.me/Sivan_Ai)
 
-Using the emerging W3C WebMCP standard (document.modelContext.registerTool), Sivan AI exposes client-side financial tools directly to in-browser agents. Instead of fragile DOM scraping or risky direct payments, agents can draft, fund, and settle milestone-based Service Agreements across Solana, Base, Stellar, Celo, BSC, and local bank accounts with human-in-the-loop oversight.
-
----
-
-## Live Links & Demo
-
-- Live Staging Web App: https://staging.sivantech.online
-- Production Web App: https://app.sivantech.online
-- Official Website: https://sivantech.online
-- Telegram AI Layer: https://t.me/Sivan_Ai
-- Founder: Samson Micheal (Abuja, Nigeria)
+</div>
 
 ---
 
-## Key Features
+## 📖 About
 
-1. Milestone-Based Service Agreements
-- Protects both buyer and seller by locking funds and releasing payouts upon verified delivery.
-- Eliminates upfront direct payment risks.
+**Sivan AI** is an agent-native financial settlement and service coordination platform that helps freelancers, businesses, and AI agents:
 
-2. Native WebMCP Client Tools
-- document.modelContext tool registration allowing browser agents to discover and execute actions securely.
-- Human-in-the-loop review cards before any blockchain transaction is broadcast.
+1. **Structure service agreements** — define scope, pricing, and milestone deliverables before work begins.
+2. **Execute via WebMCP** — browser AI agents (ChatGPT, Chrome Gemini, Claude) discover structured client tools directly via `document.modelContext`.
+3. **Multi-Chain settlement** — native routing across Solana, Base, Stellar, Celo, and BSC with gas sponsorship and non-custodial architecture.
+4. **Coordinate payments** — payments are processed directly through licensed third-party providers; Sivan holds no funds.
+5. **Off-ramp stablecoins** — convert settled USDC directly to local bank accounts (such as instant Nigerian NGN bank rails).
 
-3. True Multi-Chain Infrastructure
-- Solana: Sub-second finality and ultra-low transaction costs.
-- Stellar: Native low-fee cross-border remittance routing.
-- Base: Gas-sponsored EVM layer-2 scalability.
-- Celo & BSC: High-throughput global mobile liquidity.
-
-4. Fiat Local Bank Settlement
-- Direct off-ramp from settled USDC into Nigerian bank accounts via instant NGN rails.
+> Built for digital commerce, messaging channels, and browser agents with structured records for terms, milestone releases, provider references, and dispute review.
 
 ---
 
-## WebMCP Tools Specification
+## ✨ Features
 
-Sivan AI registers the following tools on document.modelContext:
+### 🤖 WebMCP Browser Agent Tools (Official WebMCP Challenge Entry)
+| WebMCP Tool | Description |
+|---|---|
+| `create_service_agreement` | Drafts milestone-based Service Agreements programmatically with on-screen human approval |
+| `get_wallet_balances` | Returns real-time available USDC balances across Solana, Base, Stellar, Celo, and BSC |
+| `fund_service_agreement` | Dispatches on-chain settlement funding to secure the agreement |
+| `release_agreement_milestone` | Releases milestone payouts to the contractor and generates block explorer receipts |
 
-### 1. create_service_agreement
-Drafts a milestone-based Service Agreement for freelancing or digital commerce.
-- Parameters: counterparty (string), amount (number), currency (USDC), milestones (number), deliverables (string).
-- Action: Renders an interactive review modal in the Sivan UI for user sign-off.
+### 🤝 Service Agreement Coordination
+| Feature | Description |
+|---|---|
+| **Clear service agreements** | Define scope, pricing, and delivery expectations before work starts |
+| **Mutual term confirmation** | Both buyer and seller confirm terms before any payment moves |
+| **Licensed payment coordination** | Payments routed through licensed providers — Sivan holds no funds |
+| **Delivery tracking** | Structured progress and milestone updates recorded for both parties |
+| **Dispute review workflow** | Fair review trail with immutable cryptographic logs |
+| **No app download required** | Accessible via Web App, Telegram AI, and browser agents |
 
-### 2. get_wallet_balances
-Queries real-time available and spendable balances across all supported multi-chain networks.
-- Parameters: asset (string).
-- Action: Returns unified balances across Solana, Base, Stellar, Celo, and BSC.
-
-### 3. fund_service_agreement
-Locks approved funds into the Service Agreement on the chosen blockchain.
-- Parameters: agreementId (string), network (solana | base | stellar | celo | bsc).
-- Action: Dispatches on-chain settlement transaction.
-
-### 4. release_agreement_milestone
-Releases milestone funds to the contractor upon delivery verification.
-- Parameters: agreementId (string), milestoneIndex (number).
-- Action: Dispatches payout and generates block explorer receipt links.
+### 💱 Off-Ramp Dashboard (`app.sivantech.online`)
+| Feature | Description |
+|---|---|
+| **Crypto → Bank (Sell)** | Send USDC/USDT from any wallet; receive NGN, USD, GBP, or EUR to your bank account |
+| **Bank → Crypto (Buy)** | Pay via supported bank rails; receive stablecoins to a self-custody wallet |
+| **True Multi-Chain** | Solana, Base, Stellar, Celo, BSC, and Ethereum |
+| **Transparent Fees** | Live fee displayed before deposit address generation — no surprises |
+| **Non-custodial by design** | Sivan never asks for private keys |
+| **Built-in compliance** | KYC, sanctions screening, and anti-fraud checks in the guided flow |
+| **Clear transaction tracking** | Real-time block explorer receipts (Solscan, Basescan, StellarExpert) |
+| **Instant payouts** | Fast settlement through licensed partner bank rails |
 
 ---
 
-## How to Test with WebMCP
+## 🔄 How It Works
 
-### In Google Chrome:
-1. Open Chrome and navigate to: chrome://flags/#enable-webmcp-testing
+### Service Agreement Flow
+
+```
+1. Create service agreement  →  Define scope, price, and milestone terms
+2. Confirm terms             →  Both buyer and seller confirm before funds move
+3. Process payment           →  Funds locked on-chain (Solana / Base / Stellar)
+4. Deliver service           →  Seller delivers milestone; progress tracked in Sivan
+5. Release & Payout          →  Milestone confirmed; payout dispatched to recipient
+```
+
+### Off-Ramp Flow (Crypto → Cash)
+
+```
+1. Create & verify account   →  Sign up with email + identity check
+2. Choose rails & send funds →  Pick bank, asset (USDC), and network; review rate
+3. Receive payout            →  Deposit detected → converted → paid directly to bank
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **WebMCP Standard** | W3C Draft `document.modelContext.registerTool` API (`src/webmcp.js`) |
+| **Blockchain Networks** | Solana, Base (EVM), Stellar, Celo, Binance Smart Chain (BSC), Ethereum |
+| **Stablecoins** | USDC, USDT |
+| **Edge Gateway** | Cloudflare Workers (`sivan-gateway`) for MCP streaming and CORS |
+| **Backend Core** | Fastify microservices on Render with PostgreSQL |
+| **Wallet Layer** | Privy embedded wallets, Stellar Horizon RPC, Solana web3.js |
+| **Client Frontend** | Vite / React Single Page App deployed on Render |
+| **Compliance** | KYC / AML, sanctions screening, anti-fraud verification |
+
+---
+
+## 📱 WebMCP Integration Code
+
+Browser agents discover tools registered on `document.modelContext`:
+
+```javascript
+import { registerSivanWebMcpTools } from './src/webmcp.js';
+
+// Registers Sivan AI tools for browser agents:
+await registerSivanWebMcpTools('https://api-staging.sivantech.online');
+```
+
+---
+
+## 🚀 Getting Started
+
+### Testing WebMCP in Google Chrome:
+1. Open Chrome and navigate to `chrome://flags/#enable-webmcp-testing`.
 2. Enable the flag and restart Chrome.
-3. Visit https://staging.sivantech.online
-4. Open Developer Tools -> Console to inspect registered tools via:
-   await document.modelContext.getTools();
+3. Visit [https://staging.sivantech.online](https://staging.sivantech.online).
+4. Inspect registered tools via Console: `await document.modelContext.getTools();`.
 
-### In ChatGPT In-App Browser:
-1. Navigate to https://staging.sivantech.online within the ChatGPT browser.
-2. Ask ChatGPT:
-   "Check my Sivan balance and help me draft a service agreement with @designer for 20 USDC."
-3. The agent will discover Sivan's WebMCP tools and interact directly.
+### Testing in ChatGPT In-App Browser:
+1. Open [https://staging.sivantech.online](https://staging.sivantech.online) in ChatGPT's in-app browser.
+2. Prompt ChatGPT: *"Check my Sivan balance and draft a service agreement for 20 USDC."*
 
 ---
 
-## Architecture
+## 🔒 Security & Compliance
 
-- Client Layer: WebMCP Provider (src/webmcp.js), React / Vite SPA.
-- Gateway Edge: Cloudflare Workers (sivan-gateway) routing MCP SSE streams and CORS.
-- Multi-Chain Core: Fastify microservices on Render managing Privy embedded wallets, Stellar Horizon RPC, Solana web3.js, and EVM ethers adapters.
-- Database: PostgreSQL on Neon with structured audit logs.
+- Sivan **does not hold, store, or transmit funds** at any point.
+- All payments are processed by **licensed third-party payment providers**.
+- Autonomous agents cannot move funds without explicit **human-in-the-loop confirmation**.
+- Sivan is **non-custodial by design** — private keys are never requested.
 
 ---
 
-## License
+## 📄 License
 
-MIT License. Copyright (c) 2026 Sivan Technologies (Samson Micheal). See LICENSE for details.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📬 Contact & Links
+
+| Resource | Link |
+|---|---|
+| 🌐 Main Website | [sivantech.online](https://sivantech.online/) |
+| 🚀 Production App | [app.sivantech.online](https://app.sivantech.online/) |
+| 🧪 Staging App | [staging.sivantech.online](https://staging.sivantech.online/) |
+| 🤖 Telegram AI | [t.me/Sivan_Ai](https://t.me/Sivan_Ai) |
+| 👤 Founder & CEO | [Samson Micheal](https://linkedin.com/in/samson-micheal) (Abuja, Nigeria) |
+
+---
+
+<div align="center">
+
+**Built for digital commerce and browser AI agents. Multi-Chain Native.**
+
+<img src="assets/sivan_logo_transparent.png" alt="Sivan favicon" width="48"/>
+
+*Nigeria-first. Built to scale globally.*
+
+</div>
