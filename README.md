@@ -13,7 +13,7 @@
 [![Status](https://img.shields.io/badge/Status-Staging%20Live-orange)](https://staging.sivantech.online/)
 [![Nigeria First](https://img.shields.io/badge/Live%20In-Nigeria-brightgreen)](https://sivantech.online/)
 
-[🌐 Landing Page](https://sivantech.online/) · [🚀 Production App](https://app.sivantech.online/) · [🧪 Staging App](https://staging.sivantech.online/) · [🤖 Telegram AI](https://t.me/Sivan_Ai)
+[🌐 Landing Page](https://sivantech.online/) · [🚀 Production App](https://app.sivantech.online/) · [🧪 Staging App](https://staging.sivantech.online/) · [🤖 Telegram AI (Live)](https://t.me/Sivan_Ai) · [🧪 Telegram AI (Staging)](https://t.me/SivanStaging_Bot)
 
 </div>
 
@@ -153,7 +153,8 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 | 🌐 Main Website | [sivantech.online](https://sivantech.online/) |
 | 🚀 Production App | [app.sivantech.online](https://app.sivantech.online/) |
 | 🧪 Staging App | [staging.sivantech.online](https://staging.sivantech.online/) |
-| 🤖 Telegram AI | [t.me/Sivan_Ai](https://t.me/Sivan_Ai) |
+| 🤖 Telegram AI (Live) | [t.me/Sivan_Ai](https://t.me/Sivan_Ai) |
+| 🧪 Telegram AI (Staging) | [t.me/SivanStaging_Bot](https://t.me/SivanStaging_Bot) |
 | 👤 Founder & CEO | [Samson Micheal](https://linkedin.com/in/samson-micheal) (Abuja, Nigeria) |
 
 ---
