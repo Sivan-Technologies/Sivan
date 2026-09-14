@@ -165,4 +165,4 @@ Sivan AI exposes 4 client-side tools on document.modelContext:
 - WebMCP Implementation Code: src/webmcp.js in public repository
 - Telegram AI Staging Bot: https://t.me/SivanStaging_Bot
 - Telegram AI Live Bot: https://t.me/Sivan_Ai
-- Founder: Samson Micheal (Abuja, Nigeria)
+- Founder: Samson Micheal (Founder & CEO, Sivan Technologies)
