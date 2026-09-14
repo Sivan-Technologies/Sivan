@@ -1,0 +1,12 @@
+[submodule "sivan-payment"]
+	path = sivan-payment
+	url = https://github.com/Sivan-Technologies/sivan-payment.git
+	branch = multichain
+[submodule "sivan-ai-agent"]
+	path = sivan-ai-agent
+	url = https://github.com/Sivan-Technologies/sivan-ai-agent.git
+	branch = multichain
+[submodule "sivan-minipay-app"]
+	path = sivan-minipay-app
+	url = https://github.com/Sivan-Technologies/sivan-minipay-app.git
+	branch = main
