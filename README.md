@@ -7,6 +7,7 @@
 Autonomous Multi-Chain Settlement Layer, Service Agreement Coordination & Fiat Off-Ramp for Humans and AI Agents.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Tests: 77/77 Passing](https://img.shields.io/badge/Tests-77%2F77%20Passing%20(100%25)-success)](docs/TEST_VERIFICATION_REPORT.md)
 [![Celo Agent: #9827](https://img.shields.io/badge/Celo%20ERC--8004-Agent%20%239827-35D07F.svg)](https://8004scan.io/agents/celo/9827)
 [![Multi-Chain](https://img.shields.io/badge/Multi--Chain-Celo%20%7C%20Stellar%20%7C%20Solana%20%7C%20Base-blueviolet)](https://app.sivantech.online/)
 [![WebMCP Standard](https://img.shields.io/badge/WebMCP-W3C%20Draft%20Compliant-brightgreen)](https://github.com/webmachinelearning/webmcp)
@@ -14,7 +15,7 @@ Autonomous Multi-Chain Settlement Layer, Service Agreement Coordination & Fiat O
 [![Stablecoins](https://img.shields.io/badge/Stablecoins-USDC%20%7C%20cUSD-green)](https://app.sivantech.online/)
 [![Status](https://img.shields.io/badge/Status-Staging%20Live-orange)](https://staging.sivantech.online/)
 
-[Landing Page](https://sivantech.online/) · [Production App](https://app.sivantech.online/) · [Staging App](https://staging.sivantech.online/) · [Telegram AI (Live)](https://t.me/Sivan_Ai) · [Celo Agent Registry (#9827)](https://8004scan.io/agents/celo/9827) · [Developer API Guide](docs/DEVELOPER_API_GUIDE.md)
+[Landing Page](https://sivantech.online/) · [Production App](https://app.sivantech.online/) · [Staging App](https://staging.sivantech.online/) · [Telegram AI (Live)](https://t.me/Sivan_Ai) · [Celo Agent Registry (#9827)](https://8004scan.io/agents/celo/9827) · [Developer API Guide](docs/DEVELOPER_API_GUIDE.md) · [Test Verification Report](docs/TEST_VERIFICATION_REPORT.md)
 
 </div>
 
@@ -175,6 +176,36 @@ Comprehensive per-chain integration guides, REST APIs, and agent specifications 
 ### 4. Transparent Fee Separation Protocol
 - Sivan Transfer Fee: Applies to on-chain wallet movements and service agreement releases.
 - Sivan Off-Ramp Fee: Applies to fiat cashouts. Evaluated transparently during RFQ quoting with zero hidden spreads.
+
+---
+
+## Automated Test Suite & Verification Evidence
+
+Sivan enforces a strict zero-mock production testing policy. All 77 core test suites and integration assertions pass continuously across local, staging, and CI environments.
+
+| Test Harness | Scope | Total Tests | Status | Invariants Verified |
+|---|---|---|---|---|
+| Sivan Payment Master Runner | Multi-chain backend, webhooks, fee curves, biometrics | 21 Suites | 21 / 21 Passed (100%) | Double-entry ledger, HMAC-SHA256, 12-block EVM depth, WebAuthn passkeys |
+| MiniPay & Admin Hub E2E Suite | Mobile Web3 client, bank detection, attribution | 56 Checks | 56 / 56 Passed (100%) | NUBAN auto-routing, NIBSS settlement timing, Celo token ordering, ERC-8004 #9827 |
+
+For the complete breakdown of all 21 suites, failure tolerances, and cryptographic invariants, see the [Full Test Verification Report](docs/TEST_VERIFICATION_REPORT.md).
+
+### Reproduce Tests Locally
+
+Reviewers, judges, and developers can verify all test passes directly:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Sivan-Technologies/Sivan.git
+cd Sivan
+
+# 2. Run MiniPay & Admin Hub E2E Suite (56 checks)
+npx tsx scripts/e2e-minipay-and-admin-test.ts
+
+# 3. Run Sivan Payment Master Runner (21 suites)
+cd sivan-payment
+npm test
+```
 
 ---
 
