@@ -10,3 +10,7 @@
 	path = sivan-minipay-app
 	url = https://github.com/Sivan-Technologies/sivan-minipay-app.git
 	branch = main
+[submodule "sivan-contracts"]
+	path = sivan-contracts
+	url = https://github.com/Sivan-Technologies/sivan-contracts.git
+	branch = main

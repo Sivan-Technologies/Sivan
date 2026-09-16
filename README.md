@@ -37,13 +37,14 @@ Sivan AI is an agent-native financial settlement and service coordination platfo
 
 ## Core Ecosystem Architecture & Submodules
 
-The Sivan platform is organized into three modular layers, tracked as submodules in this repository:
+The Sivan platform is organized into four modular layers, tracked as submodules in this repository:
 
 | Submodule | Repository Link | Branch | Description |
 |---|---|---|---|
 | sivan-payment | [Sivan-Technologies/sivan-payment](https://github.com/Sivan-Technologies/sivan-payment) | multichain | Core multi-chain financial engine, virtual accounts, NIP bank rails, and developer gateway |
 | sivan-ai-agent | [Sivan-Technologies/sivan-ai-agent](https://github.com/Sivan-Technologies/sivan-ai-agent) | multichain | Autonomous Service Agreement Coordinator & Celo ERC-8004 registered agent (#9827) |
 | sivan-minipay-app | [Sivan-Technologies/sivan-minipay-app](https://github.com/Sivan-Technologies/sivan-minipay-app) | main | Mobile-first Web3 client and instant cashout app optimized for Opera MiniPay on Celo |
+| sivan-contracts | [Sivan-Technologies/sivan-contracts](https://github.com/Sivan-Technologies/sivan-contracts) | main | Autonomous Non-Custodial x402 Service Agreement Settlement Facility on Celo |
 
 ```
 +-------------------------------------------------------------------------+
@@ -59,14 +60,16 @@ The Sivan platform is organized into three modular layers, tracked as submodules
 |  - Service Agreement Coordinator      - Milestone Deliverable Review    |
 +-------------------------------------------------------------------------+
                                     |
-                                    v
-+-------------------------------------------------------------------------+
-|                 MULTI-CHAIN EXECUTION & BANK RAILS                      |
-|                            sivan-payment                                |
-|  - Multi-Chain Settlement Engine (Celo, Stellar, Solana, Base)         |
-|  - Instant Nigerian Bank Off-Ramp (Textile Credit / Busha NIP Rails)   |
-|  - Real-Time RFQ Rates, Fee Separation Engine & Virtual Accounts       |
-+-------------------------------------------------------------------------+
+                  +-----------------+-----------------+
+                  |                                   |
+                  v                                   v
++-----------------------------------+ +-----------------------------------+
+|     ON-CHAIN SMART CONTRACTS      | | MULTI-CHAIN EXECUTION & RAILS     |
+|          sivan-contracts          | |           sivan-payment           |
+|  - Non-Custodial Agreement Vault  | | - Multi-Chain Settlement Engine   |
+|  - Dual EIP-712 Attestation       | | - Instant Nigerian NIP Off-Ramp   |
+|  - Dynamic Tiered Fee Engine      | | - Real-Time RFQ Rates & Accounts  |
++-----------------------------------+ +-----------------------------------+
 ```
 
 ---
