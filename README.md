@@ -21,6 +21,29 @@ Autonomous Multi-Chain Settlement Layer, Service Agreement Coordination & Fiat O
 
 ---
 
+## Cloning
+
+The chain adapters live in git submodules on non-default branches. A plain
+`git clone` fetches none of them, and grepping the top level for "stellar" or
+"celo" finds nothing, which is misleading rather than accurate.
+
+    git clone --recurse-submodules https://github.com/Sivan-Technologies/Sivan.git
+
+| Submodule | Branch | Contains |
+|---|---|---|
+| `sivan-payment` | `multichain` | Ledger, settlement engine, chain adapters, 21 test suites |
+| `sivan-ai-agent` | `multichain` | Conversational agent layer |
+| `sivan-minipay-app` | `main` | MiniPay mini-app |
+
+Multi-chain adapters are at `sivan-payment/src/wallets/`:
+`solana/`, `evm/`, `celo/` (CIP-64 fee abstraction, MiniPay detection),
+`stellar/` (fee-bump sponsorship, trustlines).
+
+Smart contracts are a separate repository:
+[Sivan-Technologies/sivan-contracts](https://github.com/Sivan-Technologies/sivan-contracts).
+
+---
+
 ## About Sivan AI
 
 Sivan AI is an agent-native financial settlement and service coordination platform that helps freelancers, businesses, and AI agents:

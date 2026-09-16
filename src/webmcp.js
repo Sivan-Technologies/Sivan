@@ -78,7 +78,7 @@ export async function registerSivanWebMcpTools(apiBaseUrl = 'https://api-staging
   // Tool 2: Get Multi-Chain Wallet Balances
   await document.modelContext.registerTool({
     name: 'get_wallet_balances',
-    description: 'Queries real-time available and spendable USDC balances across all supported multi-chain networks (Solana, Base, Stellar, Celo, BSC).',
+    description: 'Queries the signed-in user available and spendable stablecoin balance across supported networks. Returns an error rather than a figure when the balance cannot be read.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -93,18 +93,65 @@ export async function registerSivanWebMcpTools(apiBaseUrl = 'https://api-staging
     async execute({ asset = 'usdc' }, { signal }) {
       if (signal?.aborted) throw new Error('WebMCP tool execution was aborted by the user.');
 
-      const response = await fetch(`${apiBaseUrl}/api/balances/unified?asset=${asset}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        signal,
-      });
+      /**
+       * NO FABRICATED FALLBACK.
+       *
+       * This used to fall back to a hardcoded 79.75 USDC whenever the request
+       * failed. Because the balances endpoint is not reachable, that fallback
+       * was not an edge case: it was the ONLY path. Every caller was told an
+       * invented number was their real-time balance, under a tool description
+       * that promises exactly that.
+       *
+       * An agent handed an honest error can retry, ask the user to sign in, or
+       * stop. An agent handed a fake balance will reason on top of it and may
+       * try to spend money that does not exist. For a payments tool that is the
+       * difference between a bug and a loss.
+       *
+       * credentials are included because a balance is per user. Without them
+       * this call could never have returned a real figure even if the endpoint
+       * had answered.
+       */
+      let response;
+      try {
+        response = await fetch(`${apiBaseUrl}/api/balances/unified?asset=${asset}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          signal,
+        });
+      } catch (networkError) {
+        return {
+          isError: true,
+          content: [{
+            type: 'text',
+            text: 'Could not reach Sivan to read the balance. No figure is available.',
+          }],
+        };
+      }
 
-      const data = response.ok ? await response.json() : { available: 79.75, asset: 'USDC', networks: ['solana', 'base', 'stellar', 'celo', 'bsc'] };
+      if (!response.ok) {
+        const needsAuth = response.status === 401 || response.status === 403;
+        return {
+          isError: true,
+          content: [{
+            type: 'text',
+            text: needsAuth
+              ? 'Sign in to Sivan to read this balance.'
+              : `Balance unavailable (HTTP ${response.status}). No figure is available.`,
+          }],
+        };
+      }
+
+      const data = await response.json();
+      const networks = Array.isArray(data.networks) && data.networks.length
+        ? data.networks.join(', ')
+        : 'unavailable';
+
       return {
         content: [
           {
             type: 'text',
-            text: `Available Balance: ${data.available ?? 79.75} USDC. Supported Networks: Solana, Base, Stellar, Celo, BSC.`,
+            text: `Available balance: ${data.available} ${String(data.asset ?? asset).toUpperCase()}. Networks: ${networks}.`,
           },
         ],
       };

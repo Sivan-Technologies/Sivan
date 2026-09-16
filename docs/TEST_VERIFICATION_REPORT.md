@@ -3,7 +3,18 @@
 Published: September 2026
 Verified By: Sivan Core Engineering & Quality Assurance
 Repository: https://github.com/Sivan-Technologies/Sivan
-Overall Status: 100% Passing (77 / 77 Tests and Checks Passed)
+Overall Status: 19 of 21 suites passing. Two known failures, both named below.
+
+Reproduce exactly what this report claims:
+
+    git clone --recurse-submodules https://github.com/Sivan-Technologies/Sivan.git
+    cd sivan-payment && npm ci
+    USER_JWT_SECRET=any-value npx tsx scripts/run-all-tests.ts
+
+`USER_JWT_SECRET` is required: the env schema rejects at import without it and
+19 suites fail before a single assertion runs. That is a harness requirement,
+not a product failure, and it is stated here so a clean clone reproduces this
+report rather than contradicting it.
 
 ---
 
@@ -12,10 +23,24 @@ Overall Status: 100% Passing (77 / 77 Tests and Checks Passed)
 This report documents the automated test suites, protocol invariants, cryptographic verifications, and multi-channel end-to-end integration tests for Sivan AI.
 
 The Sivan test harness enforces continuous validation across two core suites:
-1. Sivan Payment Master Test Runner: 21 of 21 test suites passed (0 failures)
-2. MiniPay and Admin Hub Comprehensive E2E Suite: 56 of 56 checks passed (0 failures)
+1. Sivan Payment Master Test Runner: **19 of 21 suites passed**
+2. MiniPay and Admin Hub Comprehensive E2E Suite: 56 of 56 checks passed
 
-All suites execute genuine protocol logic, authentic cryptographic operations, real database constraints, and actual API workflows. Mocking is prohibited across all production verification pathways.
+### The two failures, stated plainly
+
+| Suite | Cause | Product impact |
+|---|---|---|
+| Build Isolation & Type Checks | 8 of 10 pass. `tsc -p tsconfig.scripts.json` fails because `frontend/node_modules` is absent and the scripts tsconfig pulls in frontend sources. Fix: `npm ci` inside `frontend/` first, or exclude `frontend/**`. | None. A harness gap, not a defect in shipped code. |
+| P2P Direct Transfer | The runner invokes `scripts/test-p2p-direct-transfer.ts`; the file is `scripts/test-p2p-transfer.ts`. Once corrected the suite still fails on an admin-auth assertion returning 401 where 200 is expected. | Under investigation. Recorded here rather than omitted. |
+
+We publish the failures because a report claiming perfection is disproved by a
+thirty-second clone, and one that names its gaps is not.
+
+Suites execute real protocol logic, real cryptographic operations and real
+database constraints. External payment rails and custodial wallet providers are
+stubbed at the boundary (`BRIDGE_MOCK_MODE=true`, `WALLET_PROVIDER=mock`) so the
+suite is deterministic, costs nothing to run, and moves no real money. The
+settlement logic under test is never mocked; only the third-party edge is.
 
 ---
 
@@ -43,7 +68,7 @@ All suites execute genuine protocol logic, authentic cryptographic operations, r
 | WebAuthn Passkeys and Biometrics | 16 | 16 | 0 | 1.5s |
 | Machine Learning Fraud Risk Engine | 6 | 6 | 0 | 0.8s |
 | MiniPay and Admin Hub End-to-End Suite | 56 | 56 | 0 | 2.9s |
-| Total Verification Checks | 307 Assertions | 307 | 0 | ~145s |
+| Total Verification Checks | 307 Assertions | 305 | 2 | ~55s |
 
 ---
 
