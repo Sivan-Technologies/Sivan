@@ -74,7 +74,7 @@ Creates an off-ramp order with a non-custodial deposit facility.
   "orderId": "orp_c0812df93a",
   "status": "pending_deposit",
   "network": "celo",
-  "asset": "cusd",
+  "asset": "usdm",
   "depositAddress": "0x4a1A9cf30A86b2b333D1a743181aAE71a50BAFBc",
   "expectedAmount": 25.0,
   "netFiatPayable": 38127.38,

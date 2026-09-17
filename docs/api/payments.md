@@ -41,7 +41,7 @@ Initiates an on-chain transfer on Celo, Stellar, Solana, or Base.
   "userId": "usr_samson_001",
   "destinationAddress": "0x4a1A9cf30A86b2b333D1a743181aAE71a50BAFBc",
   "network": "celo",
-  "asset": "cusd",
+  "asset": "usdm",
   "amount": 25.0,
   "memo": "Milestone delivery payout"
 }
@@ -49,7 +49,7 @@ Initiates an on-chain transfer on Celo, Stellar, Solana, or Base.
 
 ### Supported Networks and Assets
 
-- celo: cusd, usdc
+- celo: usdm, usdc
 - stellar: usdc, xlm
 - solana: usdc, sol
 - base: usdc, eth
@@ -62,7 +62,7 @@ Initiates an on-chain transfer on Celo, Stellar, Solana, or Base.
   "transferId": "txf_84a1e902bca4",
   "status": "confirmed",
   "network": "celo",
-  "asset": "cusd",
+  "asset": "usdm",
   "amount": 25.0,
   "feeDeducted": 0.15,
   "netAmount": 24.85,

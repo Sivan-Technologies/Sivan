@@ -32,7 +32,7 @@ export interface ServiceAgreement {
   title: string;
   description: string;
   amount: number;
-  currency: 'USDC' | 'CUSD';
+  currency: 'USDC' | 'USDM';
   network: 'celo' | 'stellar' | 'solana' | 'base';
   status: 'draft' | 'pending_payment' | 'funded' | 'completed' | 'disputed';
   milestones: {

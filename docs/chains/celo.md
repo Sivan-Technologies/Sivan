@@ -48,7 +48,7 @@ Transactions specify feeCurrency as the USDm token address. The Celo protocol au
 import { createWalletClient, http } from 'viem';
 import { celo } from 'viem/chains';
 
-const CUSD_ADDRESS = '0x765DE816845861e75A25fCA122bb6898B8B1282a';
+const USDM_ADDRESS = '0x765DE816845861e75A25fCA122bb6898B8B1282a';
 
 const client = createWalletClient({
   chain: celo,
@@ -60,7 +60,7 @@ async function sendCusdPayment(toAddress: string, amountWei: bigint) {
   const hash = await client.sendTransaction({
     to: toAddress,
     value: amountWei,
-    feeCurrency: CUSD_ADDRESS,
+    feeCurrency: USDM_ADDRESS,
   });
   return hash;
 }
@@ -98,7 +98,7 @@ curl -X POST https://api.sivantech.online/api/v1/developer/transfers \
     "userId": "usr_samson_001",
     "destinationAddress": "0x4a1A9cf30A86b2b333D1a743181aAE71a50BAFBc",
     "network": "celo",
-    "asset": "cusd",
+    "asset": "usdm",
     "amount": 25.0,
     "memo": "Milestone delivery settlement"
   }'

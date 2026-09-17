@@ -16,14 +16,14 @@ Sivan AI aggregates institutional liquidity sources (including licensed Nigerian
 - Path: /api/v1/quotes/fx
 - Query Parameters:
   - network: celo | stellar | solana | base
-  - asset: cusd | usdc
+  - asset: usdm | usdc
   - fiat: NGN
   - amount: stablecoin amount to convert (e.g., 25.0)
 
 ### Request Example
 
 ```bash
-curl "https://api.sivantech.online/api/v1/quotes/fx?network=celo&asset=cusd&fiat=NGN&amount=25.0" \
+curl "https://api.sivantech.online/api/v1/quotes/fx?network=celo&asset=usdm&fiat=NGN&amount=25.0" \
   -H "X-Sivan-Api-Key: YOUR_SIVAN_API_KEY"
 ```
 
@@ -33,7 +33,7 @@ curl "https://api.sivantech.online/api/v1/quotes/fx?network=celo&asset=cusd&fiat
 {
   "quoteId": "qte_982f1bc09a",
   "network": "celo",
-  "asset": "cusd",
+  "asset": "usdm",
   "fiat": "NGN",
   "assetAmount": 25.0,
   "exchangeRate": 1540.50,
