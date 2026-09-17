@@ -90,7 +90,7 @@ All suites execute genuine protocol logic, authentic cryptographic operations, r
 - Requires immutable audit trails whenever wallet routing configurations update.
 
 ### 8. Multi-Chain Execution Adapters
-- Celo: cUSD feeCurrency gas sponsorship, ERC-20 transfers, viem client integration.
+- Celo: USDm feeCurrency gas sponsorship, ERC-20 transfers, viem client integration.
 - Stellar: Soroban smart contracts, Circle USDC trustlines, path payment routing.
 - Solana: SPL Token Program instructions, compute budget priority fees, recent blockhash verification.
 - Base: L2 Coinbase Smart Wallet compatibility, low-gas EVM transaction execution.

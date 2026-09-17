@@ -27,7 +27,7 @@ async function runTests() {
   console.log('====================================================\n');
 
   // ---------------------------------------------------------------
-  // 1. Token Order Verification (USDC -> USDT -> cUSD -> cNGN)
+  // 1. Token Order Verification (USDC -> USDT -> USDm -> cNGN)
   // ---------------------------------------------------------------
   console.log('--- Test Suite 1: Celo Multi-Network Token Ordering ---');
   const celoConfigFile = path.join(rootDir, 'sivan-minipay-app/src/config/celo.config.ts');
@@ -41,13 +41,13 @@ async function runTests() {
     const tokensText = mainnetTokensMatch[1];
     const usdcIdx = tokensText.indexOf('USDC:');
     const usdtIdx = tokensText.indexOf('USDT:');
-    const cusdIdx = tokensText.indexOf('cUSD:');
+    const usdmIdx = tokensText.indexOf('USDm:');
     const cngnIdx = tokensText.indexOf('cNGN:');
 
     assert(usdcIdx !== -1 && usdtIdx !== -1 && cusdIdx !== -1 && cngnIdx !== -1, 'All 4 primary stablecoins defined');
     assert(usdcIdx < usdtIdx, 'USDC comes before USDT');
-    assert(usdtIdx < cusdIdx, 'USDT comes before cUSD');
-    assert(cusdIdx < cngnIdx, 'cUSD comes before cNGN');
+    assert(usdtIdx < usdmIdx, 'USDT comes before USDm');
+    assert(usdmIdx < cngnIdx, 'USDm comes before cNGN');
   }
 
   // ---------------------------------------------------------------

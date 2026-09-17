@@ -6,7 +6,7 @@ Non-Custodial Stablecoin Cashout via Nigerian Interbank Settlement Rails
 
 ## Overview
 
-Sivan AI provides automated off-ramp settlement allowing stablecoins (cUSD, USDC) on Celo, Stellar, Solana, and Base to be converted and disbursed directly into Nigerian commercial and microfinance bank accounts via NIBSS / NIP payment rails.
+Sivan AI provides automated off-ramp settlement allowing stablecoins (USDm, USDC) on Celo, Stellar, Solana, and Base to be converted and disbursed directly into Nigerian commercial and microfinance bank accounts via NIBSS / NIP payment rails.
 
 ---
 

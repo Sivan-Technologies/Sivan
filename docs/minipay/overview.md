@@ -14,7 +14,7 @@ Opera MiniPay is a lightweight, non-custodial stablecoin wallet embedded inside 
 
 - Production App: https://app.sivantech.online
 - Network: Celo Mainnet (Chain ID 42220)
-- Core Asset: cUSD (Celo Dollar) and USDC
+- Core Asset: USDm (Mento Dollar, formerly cUSD) and USDC
 
 ---
 
@@ -35,13 +35,13 @@ export function isMiniPay(): boolean {
 ```
 
 ### 2. Zero-Gas Experience with feeCurrency
-MiniPay users do not hold native CELO. All gas fees are paid in cUSD directly via Celo feeCurrency protocol parameter.
+MiniPay users do not hold native CELO. All gas fees are paid in USDm directly via Celo feeCurrency protocol parameter.
 
 ### 3. Instant Bank Off-Ramp Flow
-- Step 1: User enters cashout amount in cUSD.
+- Step 1: User enters cashout amount in USDm.
 - Step 2: Sivan fetches the live NGN exchange rate and calculates the exact payout amount.
 - Step 3: User enters their 10-digit Nigerian NUBAN account number and selects their bank. Sivan verifies the account name in real time.
-- Step 4: User signs the cUSD payment inside MiniPay.
+- Step 4: User signs the USDm payment inside MiniPay.
 - Step 5: Sivan verifies the on-chain transfer and dispatches fiat through Nigerian Interbank Settlement System (NIP) rails. Funds land in the recipient account in under 1 to 2 minutes.
 
 ---

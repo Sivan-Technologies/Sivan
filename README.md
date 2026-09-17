@@ -12,7 +12,7 @@ Autonomous Multi-Chain Settlement Layer, Service Agreement Coordination & Fiat O
 [![Multi-Chain](https://img.shields.io/badge/Multi--Chain-Celo%20%7C%20Stellar%20%7C%20Solana%20%7C%20Base-blueviolet)](https://app.sivantech.online/)
 [![WebMCP Standard](https://img.shields.io/badge/WebMCP-W3C%20Draft%20Compliant-brightgreen)](https://github.com/webmachinelearning/webmcp)
 [![MiniPay Ready](https://img.shields.io/badge/MiniPay-Celo%20Ready-brightgreen)](https://app.sivantech.online/)
-[![Stablecoins](https://img.shields.io/badge/Stablecoins-USDC%20%7C%20cUSD-green)](https://app.sivantech.online/)
+[![Stablecoins](https://img.shields.io/badge/Stablecoins-USDC%20%7C%20USDm-green)](https://app.sivantech.online/)
 [![Status](https://img.shields.io/badge/Status-Staging%20Live-orange)](https://staging.sivantech.online/)
 
 [Landing Page](https://sivantech.online/) · [Production App](https://app.sivantech.online/) · [Staging App](https://staging.sivantech.online/) · [Telegram AI (Live)](https://t.me/Sivan_Ai) · [Celo Agent Registry (#9827)](https://8004scan.io/agents/celo/9827) · [Developer API Guide](docs/DEVELOPER_API_GUIDE.md) · [Test Verification Report](docs/TEST_VERIFICATION_REPORT.md)
@@ -29,7 +29,7 @@ Sivan AI is an agent-native financial settlement and service coordination platfo
 2. Execute via WebMCP - browser AI agents (ChatGPT, Chrome Gemini, Claude) discover structured client tools directly via document.modelContext.
 3. Multi-Chain Settlement - native routing across Celo, Stellar, Solana, Base, and BSC with gas sponsorship and non-custodial architecture.
 4. Coordinate Payments - payments are processed directly through licensed third-party providers; Sivan holds no funds.
-5. Off-Ramp Stablecoins - convert settled USDC and cUSD directly to local bank accounts (such as instant Nigerian NGN bank rails).
+5. Off-Ramp Stablecoins - convert settled USDC and USDm directly to local bank accounts (such as instant Nigerian NGN bank rails).
 
 > Built for digital commerce, messaging channels, and browser agents with structured records for terms, milestone releases, provider references, and dispute review.
 
@@ -80,7 +80,7 @@ The Sivan platform is organized into four modular layers, tracked as submodules 
 | WebMCP Tool | Description |
 |---|---|
 | create_service_agreement | Drafts milestone-based Service Agreements programmatically with on-screen human approval |
-| get_wallet_balances | Returns real-time available USDC and cUSD balances across Celo, Stellar, Solana, and Base |
+| get_wallet_balances | Returns real-time available USDC and USDm balances across Celo, Stellar, Solana, and Base |
 | fund_service_agreement | Dispatches on-chain settlement funding to secure the agreement vault |
 | release_agreement_milestone | Releases milestone payouts to the contractor and generates block explorer receipts |
 
@@ -97,7 +97,7 @@ The Sivan platform is organized into four modular layers, tracked as submodules 
 ### Off-Ramp Dashboard (app.sivantech.online)
 | Feature | Description |
 |---|---|
-| Crypto to Bank (Sell) | Send USDC/cUSD from any wallet; receive NGN (Nigeria), GHS (Ghana), USD, GBP, or EUR directly to your bank account — more emerging markets coming soon |
+| Crypto to Bank (Sell) | Send USDC/USDm from any wallet; receive NGN (Nigeria), GHS (Ghana), USD, GBP, or EUR directly to your bank account — more emerging markets coming soon |
 | Bank to Crypto (Buy) | Pay via supported bank rails; receive stablecoins to a self-custody wallet |
 | True Multi-Chain | Celo, Stellar, Solana, Base, and BSC |
 | Transparent Fees | Live fee displayed before deposit address generation - no surprises |
@@ -124,7 +124,7 @@ The Sivan platform is organized into four modular layers, tracked as submodules 
 
 ```
 1. Create & Verify Account   →  Sign up with email + identity check
-2. Choose Rails & Send Funds →  Pick bank, asset (USDC/cUSD), and network; review rate
+2. Choose Rails & Send Funds →  Pick bank, asset (USDC/USDm), and network; review rate
 3. Receive Payout            →  Deposit detected → converted → paid directly to bank
 ```
 
@@ -135,7 +135,7 @@ The Sivan platform is organized into four modular layers, tracked as submodules 
 Comprehensive per-chain integration guides, REST APIs, and agent specifications are organized in the docs directory:
 
 ### Multi-Chain Integration Guides
-- [Celo Integration Guide](docs/chains/celo.md): cUSD gas sponsorship via feeCurrency, MiniPay integration, ERC-8004 Agent #9827.
+- [Celo Integration Guide](docs/chains/celo.md): USDm gas sponsorship via feeCurrency, MiniPay integration, ERC-8004 Agent #9827.
 - [Stellar Integration Guide](docs/chains/stellar.md): Soroban architecture, Circle USDC, sponsored accounts, path payment routing.
 - [Solana Integration Guide](docs/chains/solana.md): High-throughput SPL USDC settlement, Jupiter DEX routing, compute budget priority fees.
 - [Base Integration Guide](docs/chains/base.md): L2 settlement, Coinbase Smart Wallet compatibility, low-gas EVM transactions.
@@ -173,7 +173,7 @@ Comprehensive per-chain integration guides, REST APIs, and agent specifications 
 - Ghana: GHS payouts to Ghanaian bank accounts via local settlement rails.
 - Global: USD, GBP, and EUR payouts to international bank accounts for cross-border settlements.
 - More emerging markets are actively being integrated.
-- Supported Assets: cUSD and USDC across Celo, Stellar, Solana, and Base.
+- Supported Assets: USDm and USDC across Celo, Stellar, Solana, and Base.
 - Bank Resolution: Real-time 10-digit NUBAN / account validation before order dispatch.
 
 ### 4. Transparent Fee Separation Protocol
@@ -218,7 +218,7 @@ npm test
 |---|---|
 | WebMCP Standard | W3C Draft document.modelContext.registerTool API (src/webmcp.js) |
 | Blockchain Networks | Celo, Stellar, Solana, Base, and Binance Smart Chain (BSC) |
-| Stablecoins | USDC, cUSD, USDT |
+| Stablecoins | USDC, USDm, USDT |
 | Edge Gateway | Cloudflare Workers (sivan-gateway) for MCP streaming and CORS |
 | Backend Core | Fastify microservices on Render with PostgreSQL |
 | Wallet Layer | Privy embedded wallets, Stellar Horizon RPC, Solana web3.js, Celo viem |

@@ -15,8 +15,8 @@ Sivan AI leverages the Celo network as a core foundation for financial inclusion
 - Network: Celo Mainnet
 - Chain ID: 42220
 - Native Token: CELO
-- Supported Stablecoins: cUSD (Celo Dollar), USDC (Circle)
-- Gas Sponsorship: feeCurrency enabled (pay gas directly in cUSD)
+- Supported Stablecoins: USDm (Mento Dollar, formerly cUSD), USDC (Circle)
+- Gas Sponsorship: feeCurrency enabled (pay gas directly in USDm)
 - RPC Endpoints: Chainstack Mainnet RPC, forno.celo.org
 - Official Block Explorer: Celoscan (https://celoscan.io)
 
@@ -42,7 +42,7 @@ Developers and protocols interacting with Sivan on Celo can verify agent authent
 
 A unique advantage of building on Celo with Sivan AI is the elimination of the native token gas barrier. Users do not need to hold CELO to pay network transaction fees.
 
-Transactions specify feeCurrency as the cUSD token address. The Celo protocol automatically deducts network gas directly from the cUSD transfer balance:
+Transactions specify feeCurrency as the USDm token address. The Celo protocol automatically deducts network gas directly from the USDm transfer balance:
 
 ```typescript
 import { createWalletClient, http } from 'viem';
@@ -55,7 +55,7 @@ const client = createWalletClient({
   transport: http('https://forno.celo.org'),
 });
 
-// Example transfer using cUSD as the gas fee currency
+// Example transfer using USDm as the gas fee currency
 async function sendCusdPayment(toAddress: string, amountWei: bigint) {
   const hash = await client.sendTransaction({
     to: toAddress,
@@ -81,9 +81,9 @@ Sivan provides a lightweight mobile web dApp (sivan-minipay-app) optimized speci
 
 ## Celo to Nigerian Bank Off-Ramp Flow
 
-1. Rate Quoting: Developer calls GET /api/v1/quotes/fx to get real-time cUSD/NGN and USDC/NGN conversion rates.
+1. Rate Quoting: Developer calls GET /api/v1/quotes/fx to get real-time USDm/NGN and USDC/NGN conversion rates.
 2. Account Verification: POST /api/v1/offramp/resolve-bank verifies the 10-digit NUBAN and returns the account name.
-3. Transfer Execution: User sends cUSD or USDC to the designated non-custodial deposit facility.
+3. Transfer Execution: User sends USDm or USDC to the designated non-custodial deposit facility.
 4. Bank Dispersal: Sivan verifies on-chain receipt and triggers near-instant NIP settlement to the Nigerian bank account (typically under 1 to 2 minutes).
 
 ---

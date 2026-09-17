@@ -6,7 +6,7 @@ Real-Time Multi-Chain Stablecoin to Fiat Rate Discovery
 
 ## Overview
 
-Sivan AI aggregates institutional liquidity sources (including licensed Nigerian liquidity providers like Textile Credit and Busha) to provide real-time, firm FX quotes for conversions between stablecoins (USDC, cUSD) and fiat currencies (NGN).
+Sivan AI aggregates institutional liquidity sources (including licensed Nigerian liquidity providers like Textile Credit and Busha) to provide real-time, firm FX quotes for conversions between stablecoins (USDC, USDm) and fiat currencies (NGN).
 
 ---
 
