@@ -39,7 +39,7 @@ fail=0
 if eval grep -rnI "'Celo Dollar'" \
      --exclude-dir=$EXCLUDE_DIRS \
      --exclude="check-usdm-naming.sh" \
-     --exclude="ci.yml" \
+     --exclude="ci.yml" --exclude="USDM_REBRAND_AUDIT.md" \
      . 2>/dev/null; then
   echo "::error::'Celo Dollar' is the retired name. The chain reports 'Mento Dollar'."
   fail=1
@@ -58,6 +58,7 @@ hits=$(eval grep -rnIiE "'(^|[^a-zA-Z])c_?usd([^a-zA-Z]|$)'" \
          --exclude="check-usdm-naming.sh" \
          --exclude="ci.yml" \
          --exclude="*.patch" --exclude="*.pdf" --exclude="*.lock" \
+         --exclude="USDM_REBRAND_AUDIT.md" \
          . 2>/dev/null \
        | grep -v "formerly cUSD" \
        | grep -viE "retired|legacy|mid-migration|pre-rebrand|Fold the|folded to" \
@@ -78,11 +79,14 @@ fi
 # first six characters match the real address, so it survives a glance, and one
 # instance sat in a copy-pasteable snippet. Anyone following those docs sends
 # USDC to an address with no code and the funds are unrecoverable.
+# A line may cite the address while documenting it as dead, which is how the
+# finding stays on record. Those are marked `codesize=0`. Anything else is a
+# live reference telling someone to send funds there.
 if eval grep -rnI "0xcebA97Fcedaa310E7D988936b9741FA007a9C05c" \
      --exclude-dir=$EXCLUDE_DIRS \
      --exclude="check-usdm-naming.sh" \
      --exclude="*.patch" \
-     . 2>/dev/null; then
+     . 2>/dev/null | grep -v "codesize=0" | grep -v "NOT a contract"; then
   echo "::error::that address is NOT a contract (codesize 0)."
   echo "  Real Celo mainnet USDC: 0xcebA9300f2b948710d2653dD7B07f33A8B32118C"
   fail=1
