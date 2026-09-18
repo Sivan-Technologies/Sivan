@@ -113,9 +113,7 @@ export default function Footer() {
               <li style={{ display: 'flex', gap: 11, alignItems: 'flex-start' }}>
                 <MapPin size={17} strokeWidth={1.9} style={{ color: 'var(--green)', flexShrink: 0, marginTop: 4 }} />
                 <span style={{ fontSize: '0.92rem' }}>
-                  No 4, Olayinka Awo, Byzahin, Kubwa,
-                  <br />
-                  Abuja, Nigeria
+                  Global / Remote-First
                 </span>
               </li>
               <li style={{ display: 'flex', gap: 11, alignItems: 'center' }}>

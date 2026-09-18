@@ -188,7 +188,7 @@ Sivan/
 
 - Phone: `+234 913 671 7403`
 - Email: `support@sivantech.online`
-- Address: `No 4, Olayinka Awo, Byzahin, Kubwa, Abuja, Nigeria`
+- Location: `Global / Remote-First`
 
 **Wire up the lead form** — the form currently shows a confirmation message on submit (no backend). To receive real leads, point it at a form service (e.g. Formspree, Getform) or an email API in `Contact.jsx`'s `submit()` handler.
 

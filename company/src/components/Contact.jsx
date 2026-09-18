@@ -3,7 +3,7 @@ import { Mail, MapPin, Phone, Send, CheckCircle2, Clock } from 'lucide-react'
 import Reveal from './Reveal.jsx'
 
 const DETAILS = [
-  { icon: MapPin, label: 'Visit us', value: 'No 4, Olayinka Awo, Byzahin, Kubwa, Abuja, Nigeria' },
+  { icon: MapPin, label: 'Location', value: 'Global / Remote-First' },
   { icon: Phone, label: 'Call us', value: '+234 913 671 7403' },
   { icon: Mail, label: 'Email us', value: 'support@sivantech.online' },
 ]

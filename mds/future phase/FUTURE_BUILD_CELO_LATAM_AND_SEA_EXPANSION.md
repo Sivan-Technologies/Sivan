@@ -2,7 +2,7 @@
 
 Document Reference: FUTURE_BUILD_CELO_LATAM_AND_SEA_EXPANSION.md
 Category: Phase 2 / Phase 3 Multi-Corridor Roadmap
-Author: Samson Micheal, Founder & Technical Lead (Abuja, Nigeria)
+Author: Samson Micheal, Founder & Technical Lead
 Organization: Sivan Technologies
 Status: Architecture Ready (Planned for Post-Phase 1 Soft Launch)
 
@@ -82,7 +82,7 @@ All Latin American and Southeast Asian corridors settle atomically through the c
    - Argentina: 22-digit CVU/CBU or Alias input.
 
 ### 4.3. Service Agreements & WebMCP Tooling
-- Global Milestone Settlements: A developer in Abuja can complete a milestone for a client in Sao Paulo, with funds locking in USDC and settling into wBRL via PIX or cNGN via NIBSS upon buyer verification.
+- Global Milestone Settlements: A remote developer can complete a milestone for an international client, with funds locking in USDC and settling into wBRL via PIX or local currency via bank rails upon buyer verification.
 - Cross-Border AI Agent Commerce: Autonomous AI agents operating under ERC-8004 identity (Agent #9827) can execute cross-corridor RFQ swaps without requiring foreign exchange bank accounts.
 
 ---
