@@ -11,16 +11,22 @@ scratch. Two claimed different fee structures, three claimed different chain
 support, one claimed an audit that does not exist, and one carried a token
 address that resolves to nothing.
 
-**Verified against the running code on 16 September 2026.** Source of truth for
-code claims: `Sivan-Technologies/sivan-payment`, branch `multichain`, HEAD
-`c2b9450`. Not `Samswitchy/sivan-payment` on `main`, which is an older tree and
-does not contain the chain adapters.
+**Verified against the running code on 18 September 2026.** Sources of truth:
+
+| Repo | Branch | HEAD |
+|---|---|---|
+| `sivan-contracts` | `staging` | `c4a8737` |
+| `sivan-payment` | `multichain` | `013b282` |
+| `sivan-escrow-agent` | `main` | `35d8eca` |
+
+Not `sivan-payment` on `main`, which is an older tree without the chain
+adapters: it declares only `solana | base | ethereum`.
 
 ---
 
 ## 1. The thesis
 
-> **A freelancer in Lagos should never have to own a gas token to get paid.**
+> **Nobody should have to own a gas token to get paid.**
 
 This is the sentence the whole company hangs off. It is not a feature. It is the
 reason the product exists, and it is solved at protocol level on every chain
@@ -32,8 +38,8 @@ most teams pick one and stop.
 
 ### The one-liner
 
-> **Sivan pays African freelancers into a real bank account in dollars, pounds,
-> euros or naira, from a chat message, without them ever touching a gas token.**
+> **Sivan settles stablecoin work into a real bank account in dollars, pounds,
+> euros or naira, from a chat message, without anyone touching a gas token.**
 
 **Test:** a stranger reads it once and repeats it back. That is the bar.
 
@@ -48,12 +54,12 @@ digital dollars"*, *"universal conversational and agentic settlement protocol"*.
 
 | Beat | Sivan |
 |---|---|
-| **Once upon a time** | A designer in Abuja invoices a client in London. |
+| **Once upon a time** | A designer invoices a client in another country. |
 | **Every day** | She waits 3 to 5 days and loses 5 to 10 percent to intermediaries. The crypto alternative asks her to buy a gas token first. |
 | **Until one day** | She is paid in USDC inside the same chat where she agreed the work. |
 | **Because of that** | She never buys CELO, ETH, SOL or XLM. Sivan pays the gas, or the gas is paid in the dollars she already has. |
 | **Because of that** | The money reaches a real bank account, in dollars, pounds, euros or naira, and she keeps the 8 percent. |
-| **Until finally** | Every African freelancer is paid as if they lived in the client's country. |
+| **Until finally** | Anyone paid across a border is paid as if they lived in the client's country. |
 
 Six beats. Do not add a seventh.
 
@@ -61,10 +67,14 @@ Six beats. Do not add a seventh.
 
 ## 3. The one user
 
-**Amara. Designer. Abuja. Invoices clients in London and Toronto.**
+**Amara. Designer. Invoices clients in London and Toronto, banks locally.**
+
+Keep her named and specific. What was removed is the city, not the person: the
+persona was doing double duty as a geography claim, and that made the whole
+company read as regional when the payout rails are not.
 
 One persona, named, referenced on the problem slide, the product slide and in the
-demo. Not "individuals, businesses, and autonomous AI agents" — that is three
+demo. Not "individuals, businesses, and autonomous AI agents", which is three
 users, which a judge reads as none.
 
 **Who Sivan is NOT for, said out loud when asked:** crypto traders, DeFi users,
@@ -72,6 +82,15 @@ anyone who already owns a hardware wallet. They are already served. Amara is not
 
 SMEs, agencies and AI agents are real secondary segments. They live in the
 appendix. They are expansion, not positioning.
+
+**On geography.** Sivan is not an African product, and describing it as one
+understates what shipped: USD over ACH, GBP over Faster Payments, EUR over SEPA
+and NGN over NIP, with the USD, GBP and EUR accounts issued by us. The live site
+already says "Global, multi-currency."
+
+Nigeria is one corridor of four and the one we started with. Say it that way
+when asked: *"we started there because it is the hardest, not because it is the
+limit."* Do not lead with it, and do not hide it either.
 
 ---
 
@@ -135,12 +154,18 @@ Celo, Stellar and BNB Chain."
 
 | Stream | Rate | Verified |
 |---|---|---|
-| Off-ramp, USDC to naira | **1.25%** | Live: `GET /api/fees/offramp` returns `percent: "1.25"` |
+| Off-ramp, USDC to naira | **1%** | Live: `GET /api/payment/api/fees/offramp` returns `percent: "1"`, re-verified 18 Sept |
 | Escrow / service agreements | **2.5% naira, 1.5% USDC**, plus NGN 50 or $0.50 fixed | `settingsStore.ts` schema defaults |
 | P2P transfers | 0.50% under $100, 0.25% above, $0.25 floor, $0.30 new recipient | `transfer-fee-policy.ts` |
 
 Never again write "0.5% capped at $5" for escrow. That figure was in an early
 Starknet draft and is wrong by roughly 30x on a large agreement.
+
+**The off-ramp fee was 1.25% in every deck while the endpoint returned 1%.** The
+slide describing it said "returned live by our public fee endpoint", so the one
+number that advertised its own verifiability was the one that failed it. The
+deck builders now assert the value at build time and fail if it drifts. If the
+live fee changes, change it here first, then in the three builders.
 
 ### Product
 
@@ -164,7 +189,18 @@ transfer and never learns she is abroad. Say it plainly and early.
 
 ### Tests
 
-Measured 16 Sept on `multichain` HEAD `c2b9450`:
+**Two different suites. Do not merge the numbers.**
+
+`sivan-contracts`, measured 18 Sept on `staging` HEAD `c4a8737`:
+
+> **107 Hardhat tests passing**, plus 7 Foundry invariants over 12,800 calls and
+> 4 fuzz tests at 512 runs each. Slither reports nothing against the vault.
+
+That count grew from 34 because an external review raised five findings, three
+of them High. Each was reproduced as a failing test before being fixed. The
+commit history shows reproduction then fix, which is worth more than the number.
+
+`sivan-payment`, measured 16 Sept on `multichain`:
 
 > **19 of 21 suites passing.** Two failures: a missing `frontend/node_modules`
 > causing the scripts typecheck to fail, and a wrong filename in the runner for
@@ -218,11 +254,15 @@ Three surfaces, and the third is the one nobody else has.
 
 1. **Gas abstraction matured across chains.** CIP-64 on Celo, fee-bump on
    Stellar, paymasters on EVM. Two years ago the user had to hold a gas token.
-2. **The CBN linked every Nigerian bank account to BVN or NIN** (effective 1 March
-   2024). An account that resolves is one a licensed bank already verified, which
-   is what makes lightweight tiered verification possible.
-3. **Chat is already the interface.** Nigerians transact in WhatsApp and Telegram.
-   No new surface to teach.
+2. **Stablecoin off-ramps became licensed and programmatic** across several
+   corridors at once rather than one at a time. Where identity is already linked
+   to a bank account at national level, as with BVN and NIN in Nigeria,
+   lightweight tiered verification becomes possible on top of a check a licensed
+   bank already did.
+3. **Chat is already the interface.** Deals are agreed in WhatsApp and Telegram
+   before any invoice exists. No new surface to teach.
+4. **x402 gave agent-to-agent payments a protocol.** We run a working x402
+   escrow on Solana, and Celo launched its own facilitator in July.
 
 ---
 
@@ -248,7 +288,9 @@ abstraction on each one is the product, not a hedge.
 
 | Asset | Status |
 |---|---|
-| Solana mainnet signature on Solscan | **MISSING.** `scripts/test-real-5usdc-onchain.ts` exists, no signature recorded. Highest priority |
+| Verified vault on Blockscout plus a full on-chain lifecycle | **BLOCKED on redeploy.** `scripts/lifecycle-live.js` produces roughly a dozen real transactions covering deposit, release, dispute resolution and timeout refund. This replaces the settlement count as the traction artifact |
+| ERC-8004 Agent #9827 | **LIVE.** Resolves on `8004scan.io/agents/celo/9827`, creation tx `0xc0998a21...42a1`. Its owner is the same address the vault has configured as attester, so registry and contract are provably the same operator. Strongest checkable claim we have |
+| Solana mainnet signature on Solscan | **MISSING.** `scripts/test-real-5usdc-onchain.ts` exists, no signature recorded |
 | One named user with a quote | **MISSING.** One real person beats the market slide |
 | 90-second demo, one take, real money | Not made. Loom, not YouTube |
 | CIP-64 serializer | `celo/cip64-serializer.ts`. Strongest engineering artifact |
@@ -266,8 +308,9 @@ judge who hears you name it first trusts the rest.
 |---|---|
 | Almost no volume | "Two settlements, forty-two dollars. We proved the rail before opening it. The rail is the hard part and it works." |
 | Two suites failing | "Nineteen of twenty-one pass. One is a missing frontend install, one is a wrong filename in the runner. Both are in the open." |
-| No third-party audit | "The protocol we settle through is audited. Our integration is not, and we will not blur the two. It is budgeted." |
-| Nigeria only | Not true, and do not concede it. "We pay out in dollars, pounds, euros and naira, and we issue USD and GBP virtual accounts. Nigeria is where we started, not the ceiling. Ghana is next on the local rail." |
+| No third-party audit | "The protocol we settle through is audited. Our contract is not, and we will not blur the two. What we did do is commission a review that found five issues, three High, and fix every one with a failing test first. The commit history shows it." |
+| The deployed testnet vault has a known bug | True of `0x0592edf3...787caf`, which predates the audit fixes and is not a proxy. It is being replaced. Do not link it and do not verify it: a verified vulnerable contract is worse than an unverified one. |
+| Nigeria only | Not true, and do not concede it. "We pay out in dollars, pounds, euros and naira over ACH, Faster Payments, SEPA and NIP, and we issue the USD, GBP and EUR accounts. Nigeria is one corridor of four and the one we started with, because it is the hardest." |
 | Not decentralised | "Sivan holds no fiat. Balances are stablecoin, fiat moves bank to provider to bank. A settlement layer, not a custodian." |
 | WhatsApp is down | Being fixed. Do not demo it. |
 
@@ -275,17 +318,37 @@ judge who hears you name it first trusts the rest.
 
 ## 11. Fix before submitting
 
-Public, and a judge will look. Detail in `FIX_THESE_NOW.md`.
+Public, and a judge will look.
 
-1. **`webmcp.js` fabricates a balance.** The endpoint it calls 404s, so the
-   hardcoded `79.75 USDC` fallback fires on every call and is labelled real-time.
-2. **`TEST_VERIFICATION_REPORT.md` claims 100%.** It is 19 of 21. Republish honestly.
-3. **Chain adapters are invisible on a plain clone.** They are in a submodule on a
-   non-default branch. Add `--recurse-submodules` to the README, and consider
-   merging `multichain` into `main`. Your best engineering should not be one
-   branch-checkout from unfindable.
+**Done.**
 
----
+1. ~~`webmcp.js` fabricates a balance~~ Removed. The endpoint 404s, so the
+   hardcoded `79.75 USDC` fallback was the only path and it was labelled
+   real-time.
+2. ~~`TEST_VERIFICATION_REPORT.md` claims 100%~~ Republished as 19 of 21 with
+   both failures named.
+3. ~~Off-ramp fee wrong in every deck~~ 1.25% corrected to 1%, with a build
+   assertion so it cannot drift back.
+4. ~~Retired token naming~~ Mento rebranded cUSD to USDm. Renamed across five repos, with a
+   portable CI guard. Also removed a published USDC address with **codesize 0**
+   that appeared in three developer docs, including a copy-pasteable snippet.
+
+**Open, in priority order.**
+
+1. **Redeploy the vault.** `0x0592edf3...787caf` carries three High findings and
+   cannot be patched in place. Blocks the demo video and the traction artifact.
+   Runbook: `sivan-contracts/docs/REDEPLOY_NOW.md`. Budget 0.35 CELO.
+2. **Submit the right repo.** The `Sivan` umbrella uses submodules, so a plain
+   clone yields **four empty directories**. Colosseum does not accept org links,
+   so submit `sivan-contracts` directly: it is self-contained and holds 24
+   commits inside the hackathon window. Also merge `staging` into `main`, since
+   `.gitmodules` pins `sivan-contracts` to `main`, which is stale.
+3. **Three USDm patches unpushed.** The token is read-only on `sivan-payment`,
+   `sivan-minipay-app` and `sivan-ai-agent`. Patches in `usdm-patches/`, each
+   applied to a fresh clone and verified.
+4. **`settlementVerification.ts` verifies nothing on chain.** It checks
+   connectivity and credentials. The name promises more than the code does:
+   either rename it, or add a real receipt check.
 
 ## 12. Derived documents
 
@@ -299,15 +362,19 @@ Public, and a judge will look. Detail in `FIX_THESE_NOW.md`.
 
 ---
 
-## 13. The 28-day clock
+## 13. The clock
 
-Crypto World's Fair closes **12 October 2026**.
+**Final submission opens 6 October 2026**, not the 12th. Treat the 6th as the
+date everything must already be done.
 
 | When | What |
 |---|---|
-| Days 1 to 3 | Record a Solana mainnet signature. Fix `webmcp.js`. Fix the two failing suites |
-| Days 1 to 7 | Twenty real transactions. One named user quote |
-| Days 7 to 14 | Build the 8-slide deck. Record the 90-second demo |
-| Days 14 to 21 | Follow and engage judges once announced |
-| Days 21 to 26 | Ask two judges for deck feedback |
-| Day 26 | Submit. Not day 28 |
+| Now | Redeploy the vault, verify on Blockscout, prove the attester key |
+| Same day | Run `lifecycle-live.js`. Roughly a dozen real transactions on a public explorer |
+| Next | Record the demo video: live product only, ending on the Blockscout transaction |
+| Next | Record the pitch video: talking head, no slides, two minutes |
+| Then | Merge `staging` into `main`. Apply the three USDm patches if the token scope is widened |
+| Before the 6th | Ask two judges for deck feedback |
+
+The demo video depends on the redeploy. The pitch video depends on nothing and
+can be shot today.
