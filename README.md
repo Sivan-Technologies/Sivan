@@ -9,7 +9,7 @@ Autonomous Multi-Chain Settlement Layer, Service Agreement Coordination & Fiat O
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Tests: 77/77 Passing](https://img.shields.io/badge/Tests-77%2F77%20Passing%20(100%25)-success)](docs/TEST_VERIFICATION_REPORT.md)
 [![Celo Agent: #9827](https://img.shields.io/badge/Celo%20ERC--8004-Agent%20%239827-35D07F.svg)](https://8004scan.io/agents/celo/9827)
-[![Multi-Chain](https://img.shields.io/badge/Multi--Chain-Celo%20%7C%20Stellar%20%7C%20Solana%20%7C%20Base-blueviolet)](https://app.sivantech.online/)
+[![Multi-Chain](https://img.shields.io/badge/Multi--Chain-Celo%20%7C%20Stellar%20%7C%20Solana%20%7C%20Base%20%7C%20BSC%20%7C%20Arbitrum%20%7C%20Arc-blueviolet)](https://app.sivantech.online/)
 [![WebMCP Standard](https://img.shields.io/badge/WebMCP-W3C%20Draft%20Compliant-brightgreen)](https://github.com/webmachinelearning/webmcp)
 [![MiniPay Ready](https://img.shields.io/badge/MiniPay-Celo%20Ready-brightgreen)](https://app.sivantech.online/)
 [![Stablecoins](https://img.shields.io/badge/Stablecoins-USDC%20%7C%20USDm-green)](https://app.sivantech.online/)
@@ -27,7 +27,7 @@ Sivan AI is an agent-native financial settlement and service coordination platfo
 
 1. Structure Service Agreements - define scope, pricing, and milestone deliverables before work begins.
 2. Execute via WebMCP - browser AI agents (ChatGPT, Chrome Gemini, Claude) discover structured client tools directly via document.modelContext.
-3. Multi-Chain Settlement - native routing across Celo, Stellar, Solana, Base, and BSC with gas sponsorship and non-custodial architecture.
+3. Multi-Chain Settlement - native routing across Celo, Stellar, Solana, Base, BSC, Arbitrum One, and Circle Arc L1 with gas sponsorship and non-custodial architecture.
 4. Coordinate Payments - payments are processed directly through licensed third-party providers; Sivan holds no funds.
 5. Off-Ramp Stablecoins - convert settled USDC and USDm directly to local bank accounts (such as instant Nigerian NGN bank rails).
 
@@ -80,7 +80,7 @@ The Sivan platform is organized into four modular layers, tracked as submodules 
 | WebMCP Tool | Description |
 |---|---|
 | create_service_agreement | Drafts milestone-based Service Agreements programmatically with on-screen human approval |
-| get_wallet_balances | Returns real-time available USDC and USDm balances across Celo, Stellar, Solana, and Base |
+| get_wallet_balances | Returns real-time available USDC and USDm balances across Celo, Stellar, Solana, Base, Arbitrum, and Arc |
 | fund_service_agreement | Dispatches on-chain settlement funding to secure the agreement vault |
 | release_agreement_milestone | Releases milestone payouts to the contractor and generates block explorer receipts |
 
@@ -99,7 +99,7 @@ The Sivan platform is organized into four modular layers, tracked as submodules 
 |---|---|
 | Crypto to Bank (Sell) | Send USDC/USDm from any wallet; receive NGN (Nigeria), GHS (Ghana), USD, GBP, or EUR directly to your bank account — more emerging markets coming soon |
 | Bank to Crypto (Buy) | Pay via supported bank rails; receive stablecoins to a self-custody wallet |
-| True Multi-Chain | Celo, Stellar, Solana, Base, and BSC |
+| True Multi-Chain | Celo, Stellar, Solana, Base, BSC, Arbitrum One, and Circle Arc L1 |
 | Transparent Fees | Live fee displayed before deposit address generation - no surprises |
 | Non-Custodial by Design | Sivan never asks for private keys |
 | Built-in Compliance | KYC, sanctions screening, and anti-fraud checks in the guided flow |
