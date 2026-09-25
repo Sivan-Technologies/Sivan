@@ -15,7 +15,7 @@ Autonomous Multi-Chain Settlement Layer, Service Agreement Coordination & Fiat O
 [![Stablecoins](https://img.shields.io/badge/Stablecoins-USDC%20%7C%20USDm-green)](https://app.sivantech.online/)
 [![Status](https://img.shields.io/badge/Status-Staging%20Live-orange)](https://staging.sivantech.online/)
 
-[Landing Page](https://sivantech.online/) · [Production App](https://app.sivantech.online/) · [Staging App](https://staging.sivantech.online/) · [Telegram AI (Live)](https://t.me/Sivan_Ai) · [Celo Agent Registry (#9827)](https://8004scan.io/agents/celo/9827) · [Developer API Guide](docs/DEVELOPER_API_GUIDE.md) · [Test Verification Report](docs/TEST_VERIFICATION_REPORT.md)
+[Landing Page](https://sivantech.online/) · [Production App](https://app.sivantech.online/) · [Staging App](https://staging.sivantech.online/) · [Telegram Live Payment Bot](https://t.me/SivanAi_bot) · [Telegram Personal Chat](https://t.me/Sivan_Ai) · [Celo Agent Registry (#9827)](https://8004scan.io/agents/celo/9827) · [Developer API Guide](docs/DEVELOPER_API_GUIDE.md) · [Test Verification Report](docs/TEST_VERIFICATION_REPORT.md)
 
 </div>
 
@@ -49,7 +49,7 @@ The Sivan platform is organized into four modular layers, tracked as submodules 
 ```
 +-------------------------------------------------------------------------+
 |                          SIVAN CLIENT LAYER                             |
-|  Opera MiniPay dApp (Celo)  |  Telegram AI (@Sivan_Ai)  |  WebMCP Agent |
+|  Opera MiniPay dApp (Celo)  |  Telegram AI (@SivanAi_bot)  |  WebMCP Agent |
 +-------------------------------------------------------------------------+
                                     |
                                     v
@@ -295,7 +295,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 | Landing Website | https://sivantech.online |
 | Production App | https://app.sivantech.online |
 | Staging App | https://staging.sivantech.online |
-| Telegram AI (Live) | https://t.me/Sivan_Ai |
+| Telegram Live Payment Bot | https://t.me/SivanAi_bot |
+| Telegram Personal Chat | https://t.me/Sivan_Ai |
 | X (Twitter) Profile | https://x.com/sivan_Tech |
 | Founder LinkedIn | https://linkedin.com/in/samson-micheal |
 | GitHub Organization | https://github.com/Sivan-Technologies |

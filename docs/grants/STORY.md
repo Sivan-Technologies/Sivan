@@ -243,7 +243,7 @@ Three surfaces, and the third is the one nobody else has.
 
 | Surface | Status | Why it matters |
 |---|---|---|
-| Telegram bot | Live, `t.me/Sivan_Ai` | Where the deal is already being agreed |
+| Telegram bot | Live, `t.me/SivanAi_bot` | Where the deal is already being agreed |
 | Web app | Live, `app.sivantech.online` | Full dashboard |
 | **MiniPay** | Detector built (`minipay-detector.ts`, chain 42220) | **MiniPay ships inside Opera Mini, with tens of millions of African users.** Verify whether it is shipped to users before claiming it on a deck |
 | WhatsApp | Layer deployed but routing broken (404s) | Do not demo until fixed |

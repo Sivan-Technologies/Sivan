@@ -164,5 +164,5 @@ Sivan AI exposes 4 client-side tools on document.modelContext:
 - Open Source License: MIT License (visible in repo About section)
 - WebMCP Implementation Code: src/webmcp.js in public repository
 - Telegram AI Staging Bot: https://t.me/SivanStaging_Bot
-- Telegram AI Live Bot: https://t.me/Sivan_Ai
+- Telegram AI Live Bot: https://t.me/SivanAi_bot
 - Founder: Samson Micheal (Founder & CEO, Sivan Technologies)
