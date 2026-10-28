@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Menu, X, ArrowRight } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import Logo from './Logo.jsx'
 
 const LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'What Sivan does', href: '#what' },
-  { label: 'How it works', href: '#how' },
-  { label: 'Transparency', href: '#structure' },
-  { label: 'Payouts', href: '#payouts' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'How it works', href: '#workflow' },
+  { label: 'Bills', href: '#bills' },
+  { label: 'Safety', href: '#operations' },
+  { label: 'Pilot', href: '#pilot' },
 ]
 
 export default function Navbar() {
@@ -16,7 +14,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
+    const onScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -24,8 +22,8 @@ export default function Navbar() {
   return (
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-inner">
-        <a href="#home" aria-label="Sivan — home">
-          <Logo height={40} />
+        <a href="#home" aria-label="Sivan — home" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <Logo height={30} />
         </a>
 
         <nav style={{ display: 'flex', alignItems: 'center' }}>
@@ -36,13 +34,48 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <a href="#contact" className="btn btn-primary nav-cta">
-            Request Pilot Access <ArrowRight size={16} strokeWidth={2.5} />
+
+          <span
+            className="nav-status"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              marginLeft: 30,
+              paddingRight: 24,
+              borderRight: '1px solid var(--border)',
+              fontFamily: 'var(--font-mono)',
+              fontSize: 10,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--muted)',
+            }}
+          >
+            <span style={{ width: 6, height: 6, borderRadius: 999, background: 'var(--green)' }} />
+            Mainnet
+          </span>
+
+          <a
+            href="https://app.sivantech.online/"
+            target="_blank"
+            rel="noreferrer"
+            className="nav-signin"
+            style={{
+              marginLeft: 20,
+              fontSize: 12,
+              fontWeight: 600,
+              color: 'var(--slate)',
+              transition: 'color .16s ease',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary-deep)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--slate)')}
+          >
+            Sign in
           </a>
         </nav>
 
         <button className="nav-burger" aria-label="Toggle menu" onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -50,10 +83,9 @@ export default function Navbar() {
         <div
           className="mobile-menu"
           style={{
-            background: '#fff',
-            borderTop: '1px solid var(--line)',
-            padding: '10px 24px 24px',
-            boxShadow: 'var(--shadow-lg)',
+            background: 'var(--card)',
+            borderTop: '1px solid var(--border)',
+            padding: '6px 32px 26px',
           }}
         >
           {LINKS.map((l) => (
@@ -62,12 +94,12 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
-            className="btn btn-primary"
-            style={{ marginTop: 18, width: '100%' }}
+            href="https://app.sivantech.online/"
+            target="_blank"
+            rel="noreferrer"
             onClick={() => setOpen(false)}
           >
-            Request Pilot Access <ArrowRight size={16} strokeWidth={2.5} />
+            Sign in
           </a>
         </div>
       )}
